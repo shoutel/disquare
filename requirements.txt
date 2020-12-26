@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+gunicorn
+mysql-connector-python
+htmlmin
+git+https://github.com/mozilla/unicode-slugify

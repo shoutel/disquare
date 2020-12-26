@@ -1,0 +1,181 @@
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+$gray: #b9b9b9 !default;
+$dark: #403734 !default;
+
+// Disquare Color
+$dq-color: #b49798 !default;
+
+$color-variants: (
+    0: -10%,
+    1: -20%,
+    2: -40%,
+    3: -60%,
+    4: -80%,
+    5: 100%,
+    6: 80%,
+    7: 60%,
+    8: 40%,
+    9: 20%
+);
+
+@function color-mix($color, $variant) {
+  $percent: map-get($color-variants, $variant);
+  $mix-color: if($percent < 0%, white, black);
+  $colors: mix($color, $mix-color, abs($percent));
+
+  @return $colors;
+}
+
+/* Disquare color */
+$dq-color-00: color-mix($dq-color, 0);
+$dq-color-01: color-mix($dq-color, 1);
+$dq-color-02: color-mix($dq-color, 2);
+$dq-color-03: color-mix($dq-color, 3);
+$dq-color-04: color-mix($dq-color, 4);
+$dq-color-05: color-mix($dq-color, 5);
+$dq-color-06: color-mix($dq-color, 6);
+$dq-color-07: color-mix($dq-color, 7);
+$dq-color-08: color-mix($dq-color, 8);
+$dq-color-09: color-mix($dq-color, 9);
+
+/* remap colors */
+$dq-blue-00: color-mix($blue, 0);
+$dq-blue-01: color-mix($blue, 1);
+$dq-blue-02: color-mix($blue, 2);
+$dq-blue-03: color-mix($blue, 3);
+$dq-blue-04: color-mix($blue, 4);
+$dq-blue-05: color-mix($blue, 5);
+$dq-blue-06: color-mix($blue, 6);
+$dq-blue-07: color-mix($blue, 7);
+$dq-blue-08: color-mix($blue, 8);
+$dq-blue-09: color-mix($blue, 9);
+
+$dq-indigo-00: color-mix($indigo, 0);
+$dq-indigo-01: color-mix($indigo, 1);
+$dq-indigo-02: color-mix($indigo, 2);
+$dq-indigo-03: color-mix($indigo, 3);
+$dq-indigo-04: color-mix($indigo, 4);
+$dq-indigo-05: color-mix($indigo, 5);
+$dq-indigo-06: color-mix($indigo, 6);
+$dq-indigo-07: color-mix($indigo, 7);
+$dq-indigo-08: color-mix($indigo, 8);
+$dq-indigo-09: color-mix($indigo, 9);
+
+$dq-purple-00: color-mix($purple, 0);
+$dq-purple-01: color-mix($purple, 1);
+$dq-purple-02: color-mix($purple, 2);
+$dq-purple-03: color-mix($purple, 3);
+$dq-purple-04: color-mix($purple, 4);
+$dq-purple-05: color-mix($purple, 5);
+$dq-purple-06: color-mix($purple, 6);
+$dq-purple-07: color-mix($purple, 7);
+$dq-purple-08: color-mix($purple, 8);
+$dq-purple-09: color-mix($purple, 9);
+
+$dq-pink-00: color-mix($pink, 0);
+$dq-pink-01: color-mix($pink, 1);
+$dq-pink-02: color-mix($pink, 2);
+$dq-pink-03: color-mix($pink, 3);
+$dq-pink-04: color-mix($pink, 4);
+$dq-pink-05: color-mix($pink, 5);
+$dq-pink-06: color-mix($pink, 6);
+$dq-pink-07: color-mix($pink, 7);
+$dq-pink-08: color-mix($pink, 8);
+$dq-pink-09: color-mix($pink, 9);
+
+$dq-red-00: color-mix($red, 0);
+$dq-red-01: color-mix($red, 1);
+$dq-red-02: color-mix($red, 2);
+$dq-red-03: color-mix($red, 3);
+$dq-red-04: color-mix($red, 4);
+$dq-red-05: color-mix($red, 5);
+$dq-red-06: color-mix($red, 6);
+$dq-red-07: color-mix($red, 7);
+$dq-red-08: color-mix($red, 8);
+$dq-red-09: color-mix($red, 9);
+
+$dq-orange-00: color-mix($orange, 0);
+$dq-orange-01: color-mix($orange, 1);
+$dq-orange-02: color-mix($orange, 2);
+$dq-orange-03: color-mix($orange, 3);
+$dq-orange-04: color-mix($orange, 4);
+$dq-orange-05: color-mix($orange, 5);
+$dq-orange-06: color-mix($orange, 6);
+$dq-orange-07: color-mix($orange, 7);
+$dq-orange-08: color-mix($orange, 8);
+$dq-orange-09: color-mix($orange, 9);
+
+$dq-yellow-00: color-mix($yellow, 0);
+$dq-yellow-01: color-mix($yellow, 1);
+$dq-yellow-02: color-mix($yellow, 2);
+$dq-yellow-03: color-mix($yellow, 3);
+$dq-yellow-04: color-mix($yellow, 4);
+$dq-yellow-05: color-mix($yellow, 5);
+$dq-yellow-06: color-mix($yellow, 6);
+$dq-yellow-07: color-mix($yellow, 7);
+$dq-yellow-08: color-mix($yellow, 8);
+$dq-yellow-09: color-mix($yellow, 9);
+
+$dq-green-00: color-mix($green, 0);
+$dq-green-01: color-mix($green, 1);
+$dq-green-02: color-mix($green, 2);
+$dq-green-03: color-mix($green, 3);
+$dq-green-04: color-mix($green, 4);
+$dq-green-05: color-mix($green, 5);
+$dq-green-06: color-mix($green, 6);
+$dq-green-07: color-mix($green, 7);
+$dq-green-08: color-mix($green, 8);
+$dq-green-09: color-mix($green, 9);
+
+$dq-teal-00: color-mix($teal, 0);
+$dq-teal-01: color-mix($teal, 1);
+$dq-teal-02: color-mix($teal, 2);
+$dq-teal-03: color-mix($teal, 3);
+$dq-teal-04: color-mix($teal, 4);
+$dq-teal-05: color-mix($teal, 5);
+$dq-teal-06: color-mix($teal, 6);
+$dq-teal-07: color-mix($teal, 7);
+$dq-teal-08: color-mix($teal, 8);
+$dq-teal-09: color-mix($teal, 9);
+
+$dq-cyan-00: color-mix($cyan, 0);
+$dq-cyan-01: color-mix($cyan, 1);
+$dq-cyan-02: color-mix($cyan, 2);
+$dq-cyan-03: color-mix($cyan, 3);
+$dq-cyan-04: color-mix($cyan, 4);
+$dq-cyan-05: color-mix($cyan, 5);
+$dq-cyan-06: color-mix($cyan, 6);
+$dq-cyan-07: color-mix($cyan, 7);
+$dq-cyan-08: color-mix($cyan, 8);
+$dq-cyan-09: color-mix($cyan, 9);
+
+$dq-gray-00: color-mix($gray, 0);
+$dq-gray-01: color-mix($gray, 1);
+$dq-gray-02: color-mix($gray, 2);
+$dq-gray-03: color-mix($gray, 3);
+$dq-gray-04: color-mix($gray, 4);
+$dq-gray-05: color-mix($gray, 5);
+$dq-gray-06: color-mix($gray, 6);
+$dq-gray-07: color-mix($gray, 7);
+$dq-gray-08: color-mix($gray, 8);
+$dq-gray-09: color-mix($gray, 9);
+
+$dq-dark-00: color-mix($dark, 0);
+$dq-dark-01: color-mix($dark, 1);
+$dq-dark-02: color-mix($dark, 2);
+$dq-dark-03: color-mix($dark, 3);
+$dq-dark-04: color-mix($dark, 4);
+$dq-dark-05: color-mix($dark, 5);
+$dq-dark-06: color-mix($dark, 6);
+$dq-dark-07: color-mix($dark, 7);
+$dq-dark-08: color-mix($dark, 8);
+$dq-dark-09: color-mix($dark, 9);

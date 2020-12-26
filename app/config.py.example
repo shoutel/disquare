@@ -1,0 +1,7 @@
+DATABASE = {
+    'host': 'localhost',
+    'dbname': 'shoutel',
+    'user': 'user',
+    'password': 'password',
+    'port': 3306
+}
