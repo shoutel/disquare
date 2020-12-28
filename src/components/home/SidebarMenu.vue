@@ -48,9 +48,7 @@ export default {
     }
   },
   computed: {
-    stateHomeList () {
-      return this.$store.state.homeList
-    }
+
   },
   created () {
 
@@ -60,3 +58,37 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import "@/styles/default";
+
+.sidebar-menu {
+  .sidebar-menu-head {
+    color: $dq-gray-07;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    padding: 0 12px;
+  }
+
+  .sidebar-menu-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      &>a {
+        display: block;
+        padding: 7px 12px;
+        border-radius: 3px;
+        color: #000;
+
+        &.active {
+          background-color: $dq-color-07;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+</style>

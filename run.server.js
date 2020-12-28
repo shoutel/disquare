@@ -1,4 +1,5 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const fs = require('fs')
 const path = require('path')
 const { createBundleRenderer } = require('vue-server-renderer')
@@ -18,13 +19,22 @@ const renderer = createBundleRenderer(bundle, {
 
 server.use('/assets', express.static(path.resolve(__dirname, distPath, 'assets')))
 server.use('/icons', express.static(path.resolve(__dirname, distPath, 'icons')))
+server.use(cookieParser())
 
 server.get('*', (req, res) => {
-  const context = { url: req.url, title: 'Disquare' }
+  const context = {
+    url: req.url,
+    title: 'Disquare',
+    cookies: req.cookies
+  }
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      res.status(err.code).end('error')
+      if (!err.code) {
+        res.status(500).end('error')
+      } else {
+        res.status(err.code).end('error')
+      }
     } else {
       res.end(html)
     }

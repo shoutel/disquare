@@ -7,11 +7,11 @@
           :class="{ active: listType['default'] }"
           @click="setListType('default')"
         >
+          <span class="screenreader-txt">리스트형</span>
           <ListIcon
             width="16"
             height="16"
           />
-          <span class="screenreader-txt">리스트형</span>
         </a>
       </li>
       <li>
@@ -20,11 +20,11 @@
           :class="{ active: listType['feed'] }"
           @click="setListType('feed')"
         >
+          <span class="screenreader-txt">피드형</span>
           <ListRichIcon
             width="16"
             height="16"
           />
-          <span class="screenreader-txt">피드형</span>
         </a>
       </li>
     </ul>
@@ -50,22 +50,19 @@ export default {
     }
   },
   computed: {
-    stateHomeList () {
-      return this.$store.state.homeList
-    }
+
   },
   created () {
-    const listType = this.stateHomeList.listType
-    this.setListType(listType)
+    this.setListType(this.$default.listStyle.type)
   },
   methods: {
     setListType (type) {
       if (type === 'default') {
-        this.$store.commit('setDefaultListStyle')
+        this.$default.listStyle.defaultType()
         this.listType.default = true
         this.listType.feed = false
       } else if (type === 'feed') {
-        this.$store.commit('setFeedListStyle')
+        this.$default.listStyle.feedType()
         this.listType.default = false
         this.listType.feed = true
       }
@@ -75,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/default";
+@import "@/styles/default";
 
 .list-type-control {
   ul {
@@ -105,11 +102,6 @@ export default {
           svg {
             fill: #000;
           }
-        }
-
-        .screenreader-txt {
-          text-indent: -1000000px;
-          font-size: 0%;
         }
       }
     }

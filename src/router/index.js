@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Meta from 'vue-meta'
-import axios from 'axios'
 
 import MainTemplate from '../components/main/MainTemplate'
 import Home from '../components/Home'
@@ -12,7 +11,6 @@ import PageNotFound from '../components/errors/NotFound'
 
 Vue.use(Router)
 Vue.use(Meta)
-Vue.prototype.$http = axios
 
 const router = new Router({
   mode: 'history',

@@ -1,43 +1,25 @@
 <template>
-  <div class="dq-body">
-    <div class="container">
-      <div class="sidebar-left">
-        <sidebar-menu />
-      </div>
-      <div class="main-content">
-        <div class="title-area">
-          <h2>새로운 게시물</h2>
-          <home-list-type-control />
-        </div>
-        <common-list />
-      </div>
-    </div>
-  </div>
+  <main-board-list :page-title="pageTitle" />
 </template>
 
 <script>
-import SidebarMenu from './home/SidebarMenu.vue'
-import CommonList from './board/CommonList.vue'
-import HomeListTypeControl from './board/HomeListTypeControl.vue'
+import MainBoardList from './home/MainBoardList'
 
 export default {
   name: 'Home',
-  components: {
-    'sidebar-menu': SidebarMenu,
-    'common-list': CommonList,
-    'home-list-type-control': HomeListTypeControl
-  },
+  components: { MainBoardList },
   data () {
     return {
-
+      pageTitle: '새로운 게시물'
     }
   },
-  metaInfo: {
-    title: '새로운 게시물',
-    titleTemplate (titleChunk) {
-      const siteName = this.$default.site_name
-
-      return titleChunk ? `${titleChunk} - ${siteName}` : `${siteName}`
+  metaInfo () {
+    return {
+      title: this.pageTitle,
+      titleTemplate (titleChunk) {
+        const siteName = this.$default.site_name
+        return titleChunk ? `${titleChunk} - ${siteName}` : `${siteName}`
+      }
     }
   }
 }

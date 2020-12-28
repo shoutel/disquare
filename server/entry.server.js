@@ -1,10 +1,10 @@
 // Import App
 import Vue from 'vue'
-import axios from 'axios'
-import Options from '../src/options'
-import vueRouter from '../src/router'
-import vueStore from '../src/store'
-import MainTemplate from '../src/App'
+import Options from '@/options'
+import vueRouter from '@/router'
+import vueStore from '@/store'
+import MainTemplate from '@/App'
+import listStyle from '@/store/listStyle'
 
 const createApp = ssrContext => {
   const router = vueRouter
@@ -22,10 +22,26 @@ const createApp = ssrContext => {
   return { app, router, meta, store }
 }
 
+const ssrCookie = {
+  cookies: null,
+  get (k) {
+    if (this.cookies) {
+      if (k in this.cookies) {
+        return this.cookies[k]
+      }
+    }
+
+    return null
+  }
+}
+
 export default context => {
   return new Promise((resolve, reject) => {
     Vue.prototype.$default = Options.default
-    Vue.prototype.$http = axios
+
+    ssrCookie.cookies = context.cookies
+    listStyle.setTypeByCookie(ssrCookie)
+    Vue.prototype.$default.listStyle = listStyle
 
     const { app, router, meta, store } = createApp(context)
 

@@ -18,3 +18,8 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "@/styles/default";
+@import "@/styles/st_common";
+</style>

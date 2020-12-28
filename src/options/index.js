@@ -14,7 +14,8 @@ const options = {
     autoRevert: false,
     location: 'top',
     inverse: false
-  }
+  },
+  listStyle: {}
 }
 
 export default options

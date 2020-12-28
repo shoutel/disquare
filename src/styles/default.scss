@@ -6,39 +6,3 @@ $yellow-border-color: #e6c220;
 
 @import "./flexbox";
 @import "./color";
-
-noscript strong{
-  font-size: 16px;
-  width: 100%;
-  border: 1px solid $default-border-color;
-  background-color: #fff;
-  color: #444;
-  font-weight: 700;
-  padding: 12px 24px;
-  display: block;
-}
-
-html, body {
-  font-size: 14px;
-  background-color: $dq-gray-00;
-}
-
-a {
-  color: $dq-main-color;
-  &:hover, &:focus {
-    color: #8785b8;
-  }
-}
-
-.container {
-  width: 960px;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 0 20px;
-}
-
-.dq-header,
-.dq-body,
-.dq-footer {
-  min-width: 1024px;
-}

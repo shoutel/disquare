@@ -11,7 +11,7 @@
             class="brand"
             :title="siteName"
           >
-            Disquare
+            <span class="screenreader-txt">{{ siteName }}</span>
           </router-link>
         </div>
         <ul class="nav-menu">
@@ -185,7 +185,6 @@ $header-height: 54px;
           background-position: 0 50%;
           height: 100%;
           display: block;
-          text-indent: -1000000px;
         }
       }
 

@@ -1,7 +1,7 @@
 <template>
   <div
     class="list-wrapper"
-    :class="stateHomeList.listType"
+    :class="listStyle.type"
   >
     <ul>
       <li
@@ -11,11 +11,11 @@
       >
         <router-link
           class="list-item-inner"
-          to="/ddddd"
+          :to="list.url"
           tag="div"
         >
           <div
-            v-if="stateHomeList.listType === 'default'"
+            v-if="listStyle.type === 'default'"
             class="article-type"
           >
             <ImageIcon
@@ -24,15 +24,15 @@
             />
           </div>
           <div
-            v-if="stateHomeList.listType === 'feed'"
+            v-if="listStyle.type === 'feed'"
             class="article-thumb"
           >
-            <img src="../../assets/177x100.png">
+            <img :src="list.thumbUrl">
           </div>
           <div class="article-info">
             <div class="list-title-comment">
               <p class="title">
-                <router-link to="/dddddf">
+                <router-link :to="list.url">
                   <span>Title</span>
                 </router-link>
               </p>
@@ -42,29 +42,29 @@
                   width="16"
                   height="16"
                 />
-                <span class="count">12</span>
+                <span class="count">{{ list.comments }}</span>
               </div>
             </div>
             <div class="list-description">
               <div class="post-info">
                 <router-link
-                  to="/dsfsf"
+                  :to="list.boardUrl"
                   class="category"
                 >
-                  <span>카테고리</span>
+                  <span>{{ list.boardName }}</span>
                 </router-link>
-                <span class="post-writer-count">by John Doe · 조회 123 · 추천 2</span>
+                <span class="post-writer-count">by {{ list.writerInfo.userNick }} · 조회 {{ list.readed }} · 추천 {{ list.voteUp }}</span>
               </div>
               <time
                 class="post-date"
-                datetime="0000-00-00 00:00:00"
+                :datetime="list.regdate"
               >방금 전</time>
             </div>
             <div
-              v-if="stateHomeList.listType === 'feed'"
+              v-if="listStyle.type === 'feed'"
               class="list-content-short"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque lectus diam, pellentesque vulputate nulla pellentesque sed. Quisque aliquet hendrerit ante, sed porta eros semper quis.
+              {{ list.content }}
             </div>
           </div>
         </router-link>
@@ -85,6 +85,7 @@ export default {
   },
   data () {
     return {
+      listStyle: this.$default.listStyle,
       listItem: [
         {
           idx: 0,
@@ -147,9 +148,7 @@ export default {
     }
   },
   computed: {
-    stateHomeList () {
-      return this.$store.state.homeList
-    }
+
   },
   created () {
 
@@ -161,7 +160,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/default";
+@import "@/styles/default";
 
 $desc-txt-color: $dq-gray-07;
 
@@ -221,6 +220,10 @@ $desc-txt-color: $dq-gray-07;
             word-break: break-word;
             margin: 0;
             margin-right: 10px;
+
+            a {
+              color: #000;
+            }
           }
 
           .comment-count {
@@ -256,6 +259,11 @@ $desc-txt-color: $dq-gray-07;
               padding: 2px 4px;
               border-radius: 2px;
               background-color: $dq-color-01;
+              color: #000;
+
+              :hover {
+                color: $dq-dark-04
+              }
             }
 
             .post-writer-count {
@@ -280,7 +288,7 @@ $desc-txt-color: $dq-gray-07;
   }
 
   /* Feed type */
-  &.list-type-feed {
+  &.feed {
     .list-item {
       &>.list-item-inner {
         padding: 10px 14px;
